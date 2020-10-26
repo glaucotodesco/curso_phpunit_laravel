@@ -58,6 +58,7 @@ class RegisterLoginTest extends DuskTestCase
                     ->type('password_confirmation','password')
                     ->press('Register')
                     ->assertPathIs('/home')
+                    ->assertSee("You are logged in!")
                     ->logout();
                    
         });
