@@ -51,8 +51,8 @@ jobs:
         DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
       run: 
         php artisan migrate
-        php artisan test
-        php artisan dusk
+        && php artisan test
+        && php artisan dusk
       
       
       
