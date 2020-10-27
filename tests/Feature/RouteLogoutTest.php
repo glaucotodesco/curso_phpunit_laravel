@@ -10,7 +10,7 @@ class RouteLogoutTest extends TestCase
 {
    
     /** @test */
-    public function  check_routesForAllLogoutUser_exist()
+    public function check_routesForAllLogoutUser_exist()
     {
         $this->get('/')->assertStatus(200);
         $this->get('/about')->assertStatus(200);
@@ -23,6 +23,4 @@ class RouteLogoutTest extends TestCase
         //Tem que estar logado
         $this->get('/home')->assertRedirect('/login');
     }
-
-
 }

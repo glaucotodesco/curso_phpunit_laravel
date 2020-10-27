@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/',[App\Http\Controllers\PagesController::class, 'index'])->name('index');
-Route::get('/about',[App\Http\Controllers\PagesController::class, 'about'])->name('about');
-Route::get('/services',[App\Http\Controllers\PagesController::class, 'services'])->name('services');
-Route::get('/projects',[App\Http\Controllers\PagesController::class, 'projects'])->name('projects');
+Route::get('/', [App\Http\Controllers\PagesController::class, 'index'])->name('index');
+Route::get('/about', [App\Http\Controllers\PagesController::class, 'about'])->name('about');
+Route::get('/services', [App\Http\Controllers\PagesController::class, 'services'])->name('services');
+Route::get('/projects', [App\Http\Controllers\PagesController::class, 'projects'])->name('projects');

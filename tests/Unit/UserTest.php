@@ -13,7 +13,7 @@ class UserTest extends TestCase
     {
         $user = new User();
         $expected = ['name','email','password'];
-        $results = array_diff($expected,$user->getFillable());
-        $this->assertEquals(0,count($results));
+        $results = array_diff($expected, $user->getFillable());
+        $this->assertEquals(0, count($results));
     }
 }
