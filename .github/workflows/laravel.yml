@@ -11,13 +11,14 @@ jobs:
 
     runs-on: ubuntu-latest
     services:
-      mysql-service:
+      mysql:
         image: mysql:5.7
         env:
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
           MYSQL_DATABASE: blogdb
         ports:
-          - 3306
+          - 33306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
             
 
     steps:
@@ -37,12 +38,14 @@ jobs:
     
     - name: Update Dusk
       run: php artisan dusk:chrome-driver 
-    
+                
     - name: Execute tests (Unit and Feature tests) via PHPUnit/Dusk
       env:
-        DB_PORT: ${{ job.services.mysql.ports[3306] }}
+       DB_PORT: ${{ job.services.mysql.ports[3306] }}
+       DB_USERNAME: root
+       APP_URL: http://localhost:8000
       run: 
-        php artisan migrate & php artisan test & php artisan dusk
+        php artisan migrate & php artisan test & php artisan serve & php artisan dusk
       
       
       
