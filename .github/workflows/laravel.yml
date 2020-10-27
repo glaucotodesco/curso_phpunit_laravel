@@ -30,13 +30,11 @@ jobs:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
       run: vendor/bin/phpunit
-    - name: Setup Chrome Dusk
-      run: php artisan dusk:chrome-driver 74
     - name: Run Dusk Tests
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
         APP_URL: "http://127.0.0.1:8000"
-      run: php artisan dusk
+      run: php artisan dusk:chrome-driver 74 & php artisan dusk
       
       
