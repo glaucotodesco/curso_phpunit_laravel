@@ -18,7 +18,7 @@ class RegisterLoginTest extends DuskTestCase
     }
 
      /** @test */
-    public function check_ifLogin_isWorking()
+    public function checkIfLoginIsWorking()
     {
         $this->browse(function (Browser $browser) {
 
@@ -43,7 +43,7 @@ class RegisterLoginTest extends DuskTestCase
     }
 
     /** @test */
-    public function check_ifRegister_isWorking()
+    public function checkIfRegisterIsWorking()
     {
         $this->browse(function (Browser $browser) {
              $user = User::where('email', 'teste2@teste.com')->first();

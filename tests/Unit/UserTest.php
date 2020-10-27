@@ -9,7 +9,7 @@ class UserTest extends TestCase
 {
     
     /** @test */
-    public function check_ifUserColumns_isCorrect()
+    public function checkIfUserColumnsIsCorrect()
     {
         $user = new User();
         $expected = ['name','email','password'];

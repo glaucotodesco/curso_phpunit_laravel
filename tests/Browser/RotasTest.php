@@ -9,7 +9,7 @@ use Tests\DuskTestCase;
 class RotasTest extends DuskTestCase
 {
      /** @test */
-    public function check_ifRootSite_hasIndexContent()
+    public function checkIfRootSiteHasIndexContent()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
@@ -18,7 +18,7 @@ class RotasTest extends DuskTestCase
     }
 
        /** @test */
-    public function check_ifRotas_hasContent()
+    public function checkIfRoutesHasContent()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/projects')->assertSee('Projects!')

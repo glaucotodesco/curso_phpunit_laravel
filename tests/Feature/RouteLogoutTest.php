@@ -10,7 +10,7 @@ class RouteLogoutTest extends TestCase
 {
    
     /** @test */
-    public function check_routesForAllLogoutUser_exist()
+    public function checkRoutesForAllLogoutUserExist()
     {
         $this->get('/')->assertStatus(200);
         $this->get('/about')->assertStatus(200);
