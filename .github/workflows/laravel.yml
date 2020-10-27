@@ -35,4 +35,4 @@ jobs:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
         APP_URL: "http://127.0.0.1:8000"
-      run: php artisan dusk
+      run: php artisan dusk:chrome-driver 74
