@@ -17,14 +17,13 @@ jobs:
         image: mysql:5.7
         env:
           ## Accessing to Github secrets, where you can store your configuration
-          MMYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_ROOT_PASSWORD: ${{ secrets.DB_PASSWORD }}
           MYSQL_DATABASE: blogdb
         ## map the "external" 33306 port with the "internal" 3306
         ports:
           - 33306:3306
             
-    timeout-minutes: 30
-   
+
     steps:
     - uses: actions/checkout@v2
       
@@ -39,32 +38,21 @@ jobs:
       
     - name: Directory Permissions
       run: chmod -R 777 storage bootstrap/cache
-      
-    - name: Migrate (Create tables)
-      run: php artisan migrate
-      
-    - name: Execute tests (Unit and Feature tests) via PHPUnit
-      env:
-        APP_ENV: local
-        APP_URL: "http://127.0.0.1:8000"
-        DB_CONNECTION: mysql
-        DB_DATABASE: blogdb
-        DB_PORT: ${{ job.services.mysql.ports[3306] }}
-        DB_USER: root
-      run: vendor/bin/phpunit
-      
+    
     - name: Update Dusk
       run: php artisan dusk:chrome-driver 
-      
-    - name: Run Dusk Tests
+    
+    - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
-        APP_ENV: local
-        APP_URL: "http://127.0.0.1:8000"
         DB_CONNECTION: mysql
         DB_DATABASE: blogdb
-        DB_PORT: ${{ job.services.mysql.ports[3306] }}
+        DB_PORT: 33306
         DB_USER: root
-      run: php artisan dusk
+        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+      run: 
+        php artisan migrate
+        vendor/bin/phpunit
+        php artisan dusk
       
       
       
