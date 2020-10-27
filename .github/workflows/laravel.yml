@@ -38,7 +38,15 @@ jobs:
     
     - name: Update Dusk
       run: php artisan dusk:chrome-driver 
-    
+        
+    - name: Start Chrome
+      run: ./vendor/laravel/dusk/bin/chromedriver-linux
+ 
+   
+    - name: Run Laravel Server
+      run: php artisan serve
+ 
+        
     - name: Execute tests (Unit and Feature tests) via PHPUnit/Dusk
       env:
        DB_PORT: ${{ job.services.mysql.ports[3306] }}
