@@ -21,7 +21,7 @@ add('writable_dirs', []);
 
 
 // Hosts
-host('ubuntu@54.160.121.154')
+host('ubuntu@ec2-54-160-121-154.compute-1.amazonaws.com')
     ->set('deploy_path', '/var/www/html');    
     
 // Tasks
