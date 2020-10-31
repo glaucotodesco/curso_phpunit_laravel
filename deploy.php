@@ -29,8 +29,8 @@ add('writable_dirs', []);
 
 
 // Hosts
-host('ubuntu@18.233.9.228')
-    ->set('deploy_path', '/home/ubuntu');    
+host('teste2@54.159.219.195')
+    ->set('deploy_path', '/home/teste2/public_html');    
     
 // Tasks
 
