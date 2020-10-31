@@ -29,7 +29,7 @@ add('writable_dirs', []);
 
 
 // Hosts
-host('teste2@ec2-54-159-219-195.compute-1.amazonaws.com')
+host('teste2@54.159.219.195')
     ->set('deploy_path', '/home/teste2/public_html');    
     
 // Tasks
