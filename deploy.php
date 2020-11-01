@@ -12,7 +12,9 @@ set('repository', 'https://github.com/glaucotodesco/curso_phpunit_laravel.git');
 
 // [Optional] Allocate tty for git clone. Default value is false.
 set('git_tty', false); 
+
 set('writable_mode', 'chown'); 
+set('writable_chmod_mode', '0775');
 
 // Shared files/dirs between deploys 
 add('shared_files', []);
