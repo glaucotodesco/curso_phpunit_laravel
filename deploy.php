@@ -21,16 +21,9 @@ add('shared_dirs', []);
 add('writable_dirs', []);
 
 
-//host('your_server_ip')
-//    ->user('deployer')
-//    ->identityFile('~/.ssh/deployerkey')
-//    ->set('deploy_path', '/var/www/html/laravel-app');
-
-
-
 // Hosts
-host('teste2@ec2-54-159-219-195.compute-1.amazonaws.com')
-    ->set('deploy_path', '/home/teste2/public_html');    
+host('laravel@ec2-54-198-152-137.compute-1.amazonaws.com')
+    ->set('deploy_path', '/home/laravel/public_html');    
     
 // Tasks
 
