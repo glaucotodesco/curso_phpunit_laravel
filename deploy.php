@@ -21,6 +21,7 @@ add('shared_dirs', []);
 add('writable_dirs', []);
 
 
+
 // Hosts
 host('laravel@ec2-54-198-152-137.compute-1.amazonaws.com')
     ->set('deploy_path', '/home/laravel/public_html');    
