@@ -2,6 +2,6 @@
 
 @section('content')
 <div class="container">
-    {{ __('Index!') }}
+    {{ __('Index! Com CI - CD') }}
 </div>
 @endsection
