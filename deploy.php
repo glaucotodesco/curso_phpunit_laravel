@@ -32,6 +32,13 @@ task('build', function () {
     run('cd {{release_path}} && build');
 });
 
+
+task('reload:apache', function () {
+    run('sudo /etc/init.d/apache2 restart');
+});
+after('deploy', 'reload:apache');
+
+
 // [Optional] if deploy fails automatically unlock.
 after('deploy:failed', 'deploy:unlock');
 
