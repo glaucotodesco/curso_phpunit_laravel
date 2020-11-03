@@ -34,7 +34,7 @@ task('build', function () {
 
 
 task('reload:apache', function () {
-    run('sudo /etc/init.d/apache2 restart');
+    run('sudo /etc/init.d/apache2 reload');
 });
 after('deploy', 'reload:apache');
 
