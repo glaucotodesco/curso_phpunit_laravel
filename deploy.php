@@ -23,7 +23,7 @@ add('writable_dirs', []);
 
 
 // Hosts
-host('laravel@34.229.250.253')
+host('laravel@ec2-34-229-250-253.compute-1.amazonaws.com')
     ->set('deploy_path', '/home/laravel/public_html');    
     
 // Tasks
