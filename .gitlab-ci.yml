@@ -22,6 +22,7 @@ cache:
   cache:
     paths:
       - vendor/
+      
 
 yarn:
   stage: preparation
@@ -37,4 +38,3 @@ yarn:
     - node_modules/
 
 
-    
