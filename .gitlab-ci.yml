@@ -1,4 +1,4 @@
-image: registry.gitlab.com/glaucotodesco/laravel-blogdb:latest
+image: registry.gitlab.com/glaucotodesco/laravel-sample:latest
 
 services:
   - mysql:5.7
