@@ -1,22 +1,40 @@
-image: registry.gitlab.com/glaucotodesco/laravel-sample:latest
-
-services:
-  - mysql:5.7
-
-variables:
-  MYSQL_DATABASE: blogdb
-  MYSQL_ROOT_PASSWORD: root
-  DB_HOST: mysql
-  DB_USERNAME: root
+image: edbizarro/gitlab-ci-pipeline-php:7.4
 
 stages:
-  - test
+  - preparation
+
   
-unit_test:
-  stage: test
+cache:
+  key: "$CI_JOB_NAME-$CI_COMMIT_REF_SLUG"
+
+  composer:
+  stage: preparation
   script:
+    - composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts --no-suggest
     - cp .env.example .env
-    - composer install
     - php artisan key:generate
-    - php artisan migrate
-    - vendor/bin/phpunit
+  artifacts:
+    paths:
+      - vendor/
+      - .env
+    expire_in: 1 days
+    when: always
+  cache:
+    paths:
+      - vendor/
+
+yarn:
+  stage: preparation
+  script:
+    - yarn install --pure-lockfile
+  artifacts:
+    paths:
+      - node_modules/
+    expire_in: 1 days
+    when: always
+  cache:
+    paths:
+    - node_modules/
+
+
+    
