@@ -2,8 +2,7 @@ image: edbizarro/gitlab-ci-pipeline-php:7.4
 
 stages:
   - preparation
-
-  
+ 
 cache:
   key: "$CI_JOB_NAME-$CI_COMMIT_REF_SLUG"
 
@@ -22,7 +21,8 @@ cache:
   cache:
     paths:
       - vendor/
-      
+
+
 yarn:
   stage: preparation
   script:
