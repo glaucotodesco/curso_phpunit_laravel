@@ -1,3 +1,7 @@
+#https://github.com/edbizarro/gitlab-ci-pipeline-php
+#https://github.com/ohdearapp/gitlab-ci-pipeline-for-laravel/blob/master/.gitlab-ci.
+#http://www.obsis.unb.br/gitlab/help/ci/examples/laravel_with_gitlab_and_envoy/index.md
+
 stages:
   - preparation
   - building
@@ -20,7 +24,7 @@ cache:
 composer:
   stage: preparation
   services:
-    - mysql:5.7
+    - mysql:8.0
   image: edbizarro/gitlab-ci-pipeline-php:7.4-chromium
   script:
     - mysql --version
