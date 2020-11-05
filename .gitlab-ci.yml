@@ -59,11 +59,10 @@ phpunit:
   stage: testing
   services:
     - name: mysql:5.7      
-    command: ["--default-authentication-plugin=mysql_native_password"]      
+  
   dependencies:
     - composer
   script:
-    - mysql --version
     - php -v
     - php artisan dusk:chrome-driver 
     - ./vendor/phpunit/phpunit/phpunit --version
