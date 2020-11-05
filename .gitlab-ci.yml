@@ -15,14 +15,40 @@ variables:
 
 stages:
   - preparation
+  - building
   - testing
+  - security
 
 composer:
   stage: preparation
   script:
+    - mysql --version
     - cp .env.example .env
     - composer install
     - php artisan key:generate
+ artifacts:
+    paths:
+      - vendor
+      - .env
+    expire_in: 1 days
+    when: always
+  cache:
+    paths:
+      - vendor/
+
+yarn:
+  stage: preparation
+  script:
+    - yarn install --pure-lockfile
+  artifacts:
+    paths:
+      - node_modules/
+    expire_in: 1 days
+    when: always
+  cache:
+    paths:
+    - node_modules/
+
 
 phpunit:
   stage: testing
@@ -37,4 +63,10 @@ phpunit:
     - ./vendor/laravel/dusk/bin/chromedriver-linux --port=9515 &
     - sleep 5
     - php artisan dusk
- 
+  artifacts:
+    paths:
+      - ./storage/logs # for debugging
+      - ./tests/Browser/screenshots # for Dusk screenshots
+      - ./tests/Browser/console
+    expire_in: 1 days
+    when: on_failure
