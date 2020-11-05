@@ -8,7 +8,9 @@ require 'recipe/laravel.php';
 set('application', 'my_project');
 
 // Project repository
-set('repository', 'https://github.com/glaucotodesco/curso_phpunit_laravel.git');
+#set('repository', 'https://github.com/glaucotodesco/curso_phpunit_laravel.git');
+set('repository', 'https://gitlab.com/glauco.todesco/curso_phpunit_laravel.git');
+
 
 // [Optional] Allocate tty for git clone. Default value is false.
 set('git_tty', false); 
@@ -36,6 +38,7 @@ task('build', function () {
 task('reload:apache', function () {
     run('sudo /etc/init.d/apache2 reload');
 });
+
 after('deploy', 'reload:apache');
 
 
