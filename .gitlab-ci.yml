@@ -50,7 +50,7 @@ yarn:
 phpunit:
   stage: testing
   services:
-    - name: mysql:8.0
+    - name: mysql:5.7
       command: ["--default-authentication-plugin=mysql_native_password"]
   # Download the artifacts for these jobs
   dependencies:
@@ -59,7 +59,7 @@ phpunit:
     - php -v
     - sudo cp /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.bak
     - echo "" | sudo tee /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
-    - mysql --host="${DB_HOST}" --user="${MYSQL_USER}" --password="${MYSQL_PASSWORD}" "${MYSQL_DATABASE}" < db.sql
+    - mysql --host="${DB_HOST}" --user="${MYSQL_USER}" --password="${MYSQL_PASSWORD}" "${MYSQL_DATABASE}" 
     - ./vendor/phpunit/phpunit/phpunit --version
     - php -d short_open_tag=off ./vendor/phpunit/phpunit/phpunit -v --colors=never --stderr
     - sudo cp /usr/local/etc/php/conf.d/docker-php-ext-xdebug.bak /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
