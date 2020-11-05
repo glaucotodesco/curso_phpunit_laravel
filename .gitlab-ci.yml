@@ -24,8 +24,8 @@ cache:
 composer:
   stage: preparation
   services:
-    - mysql:5.7
-    alias: mysql
+    - name: mysql:5.7
+      alias: mysql
   image: edbizarro/gitlab-ci-pipeline-php:7.4-chromium
   script:
     - mysql --version
