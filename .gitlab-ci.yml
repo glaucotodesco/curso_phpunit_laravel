@@ -21,7 +21,7 @@ cache:
   cache:
     paths:
       - vendor/
-
+      
 yarn:
   stage: preparation
   script:
