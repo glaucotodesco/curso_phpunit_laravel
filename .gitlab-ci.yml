@@ -71,9 +71,11 @@ phpunit:
     when: on_failure
 
 
-   deploy:
-      stage: deploying
-      dependencies:
-        - phpunit
-   script:
-      - echo "Deploying...."
+deploy:
+  stage: deploying
+  dependencies:
+    - phpunit
+  script:
+    - echo "Deploying...."
+
+    
