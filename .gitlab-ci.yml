@@ -23,6 +23,7 @@ composer:
     - composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts --no-suggest
     - cp .env.example .env
     - php artisan key:generate
+    - php artisan migrate
   artifacts:
     paths:
       - vendor/
@@ -50,7 +51,7 @@ yarn:
 phpunit:
   stage: testing
   services:
-    - name: mysql:5.7
+    - mysql:5.7
       command: ["--default-authentication-plugin=mysql_native_password"]
   # Download the artifacts for these jobs
   dependencies:
