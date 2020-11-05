@@ -53,9 +53,6 @@ yarn:
 
 phpunit:
   stage: testing
-  services:
-    - mysql:5.7      
-  image: edbizarro/gitlab-ci-pipeline-php:7.4-chromium
   dependencies:
     - composer
   script:
