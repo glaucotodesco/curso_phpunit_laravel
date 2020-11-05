@@ -58,6 +58,7 @@ phpunit:
   script:
     - php -v
     - php artisan dusk:chrome-driver 
+    - php artisan migrate
     - ./vendor/phpunit/phpunit/phpunit --version
     - php artisan serve &
     - ./vendor/laravel/dusk/bin/chromedriver-linux --port=9515 &
