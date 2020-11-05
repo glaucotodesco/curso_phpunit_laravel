@@ -15,9 +15,9 @@ variables:
 
 stages:
   - preparation
-  - building
+  - codesniffer
   - testing
-  - security
+  
 
 composer:
   stage: preparation
@@ -37,10 +37,20 @@ composer:
     paths:
       - vendor/
 
+
+psr2:
+  stage: codesniffer
+  dependencies:
+    - composer
+  script:
+    - php -v
+    - ./vendor/bin/phpcs
+
+ 
 phpunit:
   stage: testing
   dependencies:
-    - composer
+    - psr2
   script:
     - php -v
     - php artisan dusk:chrome-driver 
