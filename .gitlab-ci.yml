@@ -37,20 +37,6 @@ composer:
     paths:
       - vendor/
 
-yarn:
-  stage: preparation
-  script:
-    - yarn install --pure-lockfile
-  artifacts:
-    paths:
-      - node_modules/
-    expire_in: 1 days
-    when: always
-  cache:
-    paths:
-    - node_modules/
-
-
 phpunit:
   stage: testing
   dependencies:
