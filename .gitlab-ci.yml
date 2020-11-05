@@ -28,6 +28,7 @@ composer:
     - composer install
     - php artisan key:generate
     - php artisan migrate
+    - dep --version
   artifacts:
     paths:
       - vendor
