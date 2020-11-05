@@ -57,13 +57,15 @@ phpunit:
     - composer
   script:
     - php -v
-    - sudo cp /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.bak
-    - echo "" | sudo tee /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
     - ./vendor/phpunit/phpunit/phpunit --version
-    - php -d short_open_tag=off ./vendor/phpunit/phpunit/phpunit -v --colors=never --stderr
-    - sudo cp /usr/local/etc/php/conf.d/docker-php-ext-xdebug.bak /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+    - php artisan serve &
+    - ./vendor/laravel/dusk/bin/chromedriver-linux --port=9515 &
+    - sleep 5
+    - php artisan dusk
   artifacts:
     paths:
       - ./storage/logs # for debugging
+      - ./tests/Browser/screenshots # for Dusk screenshots
+      - ./tests/Browser/console
     expire_in: 1 days
     when: on_failure
