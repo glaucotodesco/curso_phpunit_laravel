@@ -26,7 +26,6 @@ composer:
       command: ["--default-authentication-plugin=mysql_native_password"]      
   script:
     - mysql --version
-    - echo "${DB_HOST} - ${MYSQL_USER} - ${MYSQL_USER} - ${MYSQL_USER}"
     - yarn config set cache-folder .yarn
     - yarn install --pure-lockfile
     - composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts --no-suggest
@@ -65,7 +64,6 @@ phpunit:
     - composer
   script:
     - mysql --version
-    - echo "${DB_HOST} - ${MYSQL_USER} - ${MYSQL_USER} - ${MYSQL_USER}"
     - php -v
     - php artisan dusk:chrome-driver 
     - ./vendor/phpunit/phpunit/phpunit --version
