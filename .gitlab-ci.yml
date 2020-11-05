@@ -51,7 +51,7 @@ yarn:
 phpunit:
   stage: testing
   services:
-    - mysql:5.7
+    - name: mysql:5.7
       command: ["--default-authentication-plugin=mysql_native_password"]
   # Download the artifacts for these jobs
   dependencies:
