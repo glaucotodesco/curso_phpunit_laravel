@@ -17,6 +17,7 @@ stages:
   - preparation
   - codesniffer
   - testing
+  - deploying
   
 
 composer:
@@ -51,6 +52,7 @@ phpunit:
   stage: testing
   dependencies:
     - psr2
+    - composer
   script:
     - php -v
     - php artisan dusk:chrome-driver 
@@ -67,3 +69,11 @@ phpunit:
       - ./tests/Browser/console
     expire_in: 1 days
     when: on_failure
+
+
+   deploy:
+      stage: deploying
+      dependencies:
+        - phpunit
+   script:
+      - echo "Deploying...."
