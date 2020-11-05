@@ -15,8 +15,8 @@ variables:
   MYSQL_ROOT_PASSWORD: root
   MYSQL_USER: root
   MYSQL_PASSWORD: root
-  MYSQL_DATABASE: blogdb
-  DB_HOST: mariadb
+  MYSQL_DATABASE: core
+  DB_HOST: mysql
 
 cache:
   key: $CI_BUILD_REF_NAME 
@@ -24,8 +24,8 @@ cache:
 composer:
   stage: preparation
   services:
-    - mysql:8.0
-  image: edbizarro/gitlab-ci-pipeline-php:7.4-chromium
+    - mysql:5.7
+  image: edbizarro/gitlab-ci-pipeline-php:7.4
   script:
     - mysql --version
     - yarn config set cache-folder .yarn
