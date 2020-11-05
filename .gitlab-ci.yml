@@ -57,6 +57,7 @@ phpunit:
     - composer
   script:
     - php -v
+    - php artisan dusk:chrome-driver 
     - ./vendor/phpunit/phpunit/phpunit --version
     - php artisan serve &
     - ./vendor/laravel/dusk/bin/chromedriver-linux --port=9515 &
