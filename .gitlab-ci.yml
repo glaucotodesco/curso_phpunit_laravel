@@ -16,7 +16,9 @@ variables:
   MYSQL_USER: root
   MYSQL_PASSWORD: root
   MYSQL_DATABASE: core
-  DB_HOST: mysql-test
+  DB_HOST: 127.0.0.1
+
+  
 
 cache:
   key: $CI_BUILD_REF_NAME 
