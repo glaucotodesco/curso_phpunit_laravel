@@ -25,7 +25,7 @@ composer:
   stage: preparation
   services:
     - mysql:5.7
-  image: edbizarro/gitlab-ci-pipeline-php:7.4
+  image: edbizarro/gitlab-ci-pipeline-php:7.1
   script:
     - mysql --version
     - yarn config set cache-folder .yarn
