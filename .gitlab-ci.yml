@@ -15,14 +15,16 @@ variables:
   DB_HOST: mysql
 
 cache:
-  key: "$CI_JOB_NAME-$CI_COMMIT_REF_SLUG"
+  key: $CI_BUILD_REF_NAME 
 
 composer:
   stage: preparation
   script:
+    - yarn config set cache-folder .yarn
+    - yarn install --pure-lockfile
     - composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts --no-suggest
     - cp .env.example .env
-    - php artisan key:generate
+    - php artisan migrate:refresh --seed
     - php artisan migrate
   artifacts:
     paths:
