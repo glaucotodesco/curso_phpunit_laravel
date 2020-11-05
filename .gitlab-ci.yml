@@ -26,7 +26,8 @@ composer:
     - cp .env.example .env
     - composer install
     - php artisan key:generate
- artifacts:
+    - php artisan migrate
+  artifacts:
     paths:
       - vendor
       - .env
