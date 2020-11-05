@@ -26,6 +26,7 @@ composer:
     - mysql --version
     - cp .env.example .env
     - composer install
+    - composer require deployer/deployer deployer/recipes 
     - php artisan key:generate
     - php artisan migrate
     - dep --version
