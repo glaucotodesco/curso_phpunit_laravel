@@ -73,7 +73,7 @@ phpunit:
 deploy:
   stage: deploying
   dependencies:
-    - phpunit
+    - composer
   before_script:
     - mkdir -p ~/.ssh
     - eval $(ssh-agent -s)
