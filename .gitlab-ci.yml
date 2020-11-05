@@ -70,6 +70,7 @@ phpunit:
     expire_in: 1 days
     when: on_failure
 
+
 deploy:
   stage: deploying
   dependencies:
