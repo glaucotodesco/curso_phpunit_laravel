@@ -24,14 +24,10 @@ composer:
   stage: preparation
   script:
     - mysql --version
-    - curl -LO https://deployer.org/deployer.phar
-    - sudo mv deployer.phar /usr/local/bin/dep
-    - sudo chmod +x /usr/local/bin/dep
     - cp .env.example .env
     - composer install
     - php artisan key:generate
     - php artisan migrate
-    - dep --version
   artifacts:
     paths:
       - vendor
@@ -79,6 +75,10 @@ deploy:
   dependencies:
     - composer
   before_script:
+    - curl -LO https://deployer.org/deployer.phar
+    - sudo mv deployer.phar /usr/local/bin/dep
+    - sudo chmod +x /usr/local/bin/dep
+    - dep --version
     - mkdir -p ~/.ssh
     - eval $(ssh-agent -s)
     - echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
